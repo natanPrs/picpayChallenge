@@ -1,4 +1,4 @@
-package com.picpayChallenge.picpayChallenge
+package com.picpayChallenge
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
