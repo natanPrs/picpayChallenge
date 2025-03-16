@@ -3,6 +3,8 @@ package com.picpayChallenge.services
 import com.picpayChallenge.domain.users.User
 import com.picpayChallenge.domain.users.UserType
 import com.picpayChallenge.dtos.UserDto
+import com.picpayChallenge.exceptions.InsufficientBalanceException
+import com.picpayChallenge.exceptions.InvalidUserTypeException
 import com.picpayChallenge.mapper.toUserEntity
 import com.picpayChallenge.repositories.UserRepository
 import org.springframework.stereotype.Service
@@ -24,11 +26,11 @@ class UserService(private val userRepository: UserRepository) {
 
     fun validateTransaction(sender: User, amount: BigDecimal){
         if (sender.userType == UserType.MERCHANT) {
-            throw Exception("Merchant users cannot make a transaction.")
+            throw InvalidUserTypeException()
         }
 
         if (sender.balance < amount){
-            throw Exception("Insufficient balance.")
+            throw InsufficientBalanceException()
         }
     }
 
