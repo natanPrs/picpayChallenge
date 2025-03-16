@@ -43,4 +43,8 @@ class UserService(private val userRepository: UserRepository) {
     fun saveUser(user: User): User {
         return userRepository.save(user)
     }
+
+    fun findUserByDocument(document: String) : User {
+        return userRepository.findUserByDocument(document) ?: throw UserNotFoundException()
+    }
 }
