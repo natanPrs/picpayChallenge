@@ -9,7 +9,7 @@ data class User(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
 
     val fullName: String,
 
@@ -21,9 +21,9 @@ data class User(
 
     val password: String,
 
-    val balance: BigDecimal,
+    var balance: BigDecimal,
 
     @Enumerated(EnumType.STRING)
     val userType: UserType,
 
-)
+    )
